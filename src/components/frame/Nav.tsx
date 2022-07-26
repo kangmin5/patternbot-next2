@@ -17,6 +17,7 @@ import styles from '@/styles/Nav.module.css'
               <Link className={styles.menu} href='/menus/about'>About</Link>
               <Link className={styles.menu} href='/menus/contact'>Contact</Link>
               <Link className={styles.menu} href='/menus/faq'>FAQ</Link>
+              <Link className={styles.menu} href='/users/userlist'>userlist</Link>
 
           </div>
         <div className={styles.loginMenu}>
