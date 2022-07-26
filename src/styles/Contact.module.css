@@ -1,0 +1,17 @@
+.container{
+    width: 90vw;
+    text-align: center;
+    margin-top: 4rem;
+}
+.container h1{
+    margin-bottom: 4rem;
+}
+.card {
+    opacity: 0.8;
+    box-shadow: 3px 2px 15px -1px rgba(0,0,0,0.88);
+}
+.card:hover{
+    opacity: 0.9;
+
+    background-color: rgb(230, 232, 231);
+}
