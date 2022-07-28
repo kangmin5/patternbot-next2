@@ -1,4 +1,4 @@
-import Ttrade from '@/components/trade/Ttrade'
+import Ttrade from '@/components/coins/Ttrade'
 import React from 'react'
 
 const TtradePage = () => {

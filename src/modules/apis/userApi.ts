@@ -6,15 +6,15 @@ const headers = {
     Authorization: "JWT fefege...",
 }
 
-export const fetchUsers = async () => {
-    try {
-        const res: AxiosResponse =
-            await axios.get<User[]>(`${SERVER}/findAll`)
-        return res;
-    } catch (err) {
-        return err;
-    }
-}
+// export const fetchUsersApi = async () => {
+//     try {
+//         const res: AxiosResponse =
+//             await axios.get<User[]>(`${SERVER}/users`)
+//         return res;
+//     } catch (err) {
+//         return err;
+//     }
+// }
 
 export const userJoinApi = async (
     payload: {

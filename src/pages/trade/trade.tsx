@@ -1,10 +1,11 @@
-import Trade from '@/components/trade/Trade'
+// import Trade from '@/components/coins/Trade'
 import React from 'react'
 
 const TradePage = () => {
   return (
     <div>
-      <Trade/>
+      <h3>TradePage</h3>
+      {/* <Trade/> */}
     </div>
   )
 }

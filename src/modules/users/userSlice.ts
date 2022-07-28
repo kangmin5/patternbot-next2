@@ -35,26 +35,26 @@ export const userSlice = createSlice({
             state.status = 'failed'
             state.data = payload
         },
-        fetchUsersRequest(state: UserState) {
-            console.log(`진행 2 : fetchUsersRequest  ${JSON.stringify(state)} `)
-            state.status = 'loading';
-        },
-        fetchUsersSuccess(state: UserState, { payload }) {
-            console.log(`진행 2 : fetchUsersSuccess ${JSON.stringify(state)} `)
-            state.status = 'idle'
-            state.data = [...state.data, payload]
-            console.log(`서버 payload: ${JSON.stringify(state.data)}`)
-        },
-        fetchUsersFailure(state: UserState, { payload }) {
-            console.log(`진행 2 : fetchUsersFailure ${JSON.stringify(state)} `)
-            state.status = 'failed'
-            state.data = payload
-        }
+        // fetchUsersRequest(state: UserState) {
+        //     console.log(`진행 2 : fetchUsersRequest  ${JSON.stringify(state)} `)
+        //     state.status = 'loading';
+        // },
+        // fetchUsersSuccess(state: UserState, { payload }) {
+        //     console.log(`진행 2 : fetchUsersSuccess ${JSON.stringify(state)} `)
+        //     state.status = 'idle'
+        //     state.data = [...state.data, payload]
+        //     console.log(`서버 payload: ${JSON.stringify(state.data)}`)
+        // },
+        // fetchUsersFailure(state: UserState, { payload }) {
+        //     console.log(`진행 2 : fetchUsersFailure ${JSON.stringify(state)} `)
+        //     state.status = 'failed'
+        //     state.data = payload
+        // }
     }
 })
 export const { joinRequest, joinSuccess, joinFailure,
                 loginRequest, loginSuccess, loginFailure,
-                fetchUsersRequest,fetchUsersSuccess,fetchUsersFailure
+                // fetchUsersRequest,fetchUsersSuccess,fetchUsersFailure
             } = userSlice.actions;
 
 const {reducer, actions} = userSlice

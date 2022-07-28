@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "/styles/trade.module.css"
+import styles from '@/styles/ttrade.module.css'
 
 const Ttrade=()=>{ 
 return (
@@ -19,16 +19,14 @@ return (
               <div>
                   <div>
                   <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;
+
                   <label ><input type="checkbox" />사용자 설정</label>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                   <label><input type="checkbox" />Ai 추천</label><br />
-                  <br /><br /><br /><br />
+
                   </div>
                   <div className={styles.text}>
-                  &nbsp;
+
                       <label > 투자 금액 </label>
                       <input  type='text' />
                   </div>
@@ -37,7 +35,7 @@ return (
                       <input  type='text' />
                   </div>
                   <div className={styles.text}>
-                  &nbsp; &nbsp; &nbsp;<label >손해률 </label>
+                  <label >손해률 </label>
                       <input  type='text' />
                   </div>
                   <br/><br/>

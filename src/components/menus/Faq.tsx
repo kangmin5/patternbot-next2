@@ -23,7 +23,7 @@ const Faq:FC = () => {
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
-          ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️
+          <p>자주 물어보는 내용들입니다.</p>
         </ListSubheader>
       }>
         <ListItemButton onClick={handleClick}>

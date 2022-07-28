@@ -1,7 +1,7 @@
-import { PayloadAction } from '@reduxjs/toolkit'
+
 import { AxiosResponse } from 'axios';
-import { call, delay, put, takeLatest } from 'redux-saga/effects'
-import { fetchUsers, userJoinApi, userLoginApi } from '../apis/userApi';
+import { call, put, takeLatest } from 'redux-saga/effects'
+import { userJoinApi, userLoginApi } from '../apis/userApi';
 import { userActions } from '../users/userSlice';
 
 interface UserJoinType{
@@ -51,16 +51,16 @@ function* login(login: UserLoginType){
     }
 }
 
-export function* fetchUsersSaga(){
-    const { fetchUsersSuccess, fetchUsersFailure } = userActions
-        try {
-            const res:AxiosResponse = yield call(fetchUsers)
-            console.log(`fetchUsersSaga : ${JSON.stringify(res.data)}`) 
-            yield put(fetchUsersSuccess(res.data))
-        } catch (error) {
-            yield put(fetchUsersFailure(error))
-        }
-}
+// export function* fetchUsersSaga(){
+//     const { fetchUsersSuccess, fetchUsersFailure } = userActions
+//         try {
+//             const res:AxiosResponse = yield call(fetchUsers)
+//             console.log(`fetchUsersSaga : ${JSON.stringify(res.data)}`) 
+//             yield put(fetchUsersSuccess(res.data))
+//         } catch (error) {
+//             yield put(fetchUsersFailure(error))
+//         }
+// }
 
 
 
@@ -70,6 +70,6 @@ export function* watchJoin(){
 export function* watchLogin(){
     yield takeLatest(userActions.loginRequest, login)
 }
-export function* watchFetchUser(){
-    yield takeLatest(userActions.fetchUsersRequest, fetchUsersSaga)
-}
+// export function* watchFetchUser(){
+//     yield takeLatest(userActions.fetchUsersRequest, fetchUsersSaga)
+// }

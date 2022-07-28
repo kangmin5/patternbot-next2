@@ -113,7 +113,7 @@ const Join:FC = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 1 }}
+                    sx={{ mt: 3, mb: 1 ,p:2}}
                   >
                     회원가입
                   </Button>

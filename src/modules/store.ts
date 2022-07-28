@@ -3,10 +3,10 @@ import createSagaMiddleware from '@redux-saga/core'
 import usersReducer from './users/userSlice'
 import { createWrapper, HYDRATE } from 'next-redux-wrapper'
 import logger from 'redux-logger'
-import coinReducer from './coins'
-import orderReducer from './orders'
-import settingReducer from './settings'
-import faqsReducer from './faqs'
+// import coinReducer from './coins'
+// import orderReducer from './orders'
+// import settingReducer from './settings'
+// import faqsReducer from './faqs'
 import rootSaga from './sagas'
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 import { UserState } from '@/interface'
@@ -44,10 +44,9 @@ const makestore = () => {
     return store
 }
 
-
 const store = makestore();
-export type AppState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
+// export type AppState = ReturnType<typeof store.getState>;
+// export type AppDispatch = ReturnType<typeof store>["dispatch"];
+// export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
 export const wrapper = createWrapper(makestore, {debug: isDev})
 export default store;
