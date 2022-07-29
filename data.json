@@ -1,0 +1,34 @@
+{
+    "users":[
+        {
+            "userid":0,
+            "name":"강민",
+            "username":"mk",
+            "password":"1111",
+            "email":"mk@kangmin.kr",
+            "mobile":"010-0000-0000",
+            "token":"dkfjalsdkfjas",
+            "islogged":"false"
+        },
+        {
+            "userid":1,
+            "name":"김철수",
+            "username":"cskim",
+            "password":"1111",
+            "email":"kim@test.kr",
+            "mobile":"010-1111-1111",
+            "token":"32423dssdf",
+            "islogged":"false"
+        },
+        {
+            "userid":2,
+            "name":"로미오",
+            "username":"romio",
+            "password":"1111",
+            "email":"romio@test.com",
+            "mobile":"010-2222-2222",
+            "token":"f3f3f3f3f3",
+            "islogged":"false"
+        }
+    ]
+}

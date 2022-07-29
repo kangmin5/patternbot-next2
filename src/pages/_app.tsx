@@ -1,7 +1,7 @@
 import Footer from '@/components/frame/Footer'
 import Layout from '@/components/frame/Layout'
 import Nav from '@/components/frame/Nav'
-import store, { wrapper } from '@/modules/store'
+import  { wrapper } from '@/modules/store'
 import '@/styles/globals.css'
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
@@ -9,13 +9,13 @@ import { Provider } from 'react-redux'
 
 function App({ Component, pageProps: {...pageProps}  }: AppProps) {
   return (
-  <Provider store = {store}>
+    <div>
       <Nav/>
       <Layout>
           <Component {...pageProps} />
       </Layout> 
-      <Footer/>
-    </Provider>
+      <Footer />
+    </div>
   )
 }
 

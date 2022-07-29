@@ -1,13 +1,15 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import styles from '@/styles/Join.module.css'
-import Link from 'next/link'
+
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 
 import { useDispatch } from 'react-redux';
-import { userActions } from '@/modules/users/userSlice';
+import { userActions } from '@/modules/slices/userSlice';
+
+import { User } from '@/modules/types';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { User } from '@/interface';
+
 
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -18,14 +20,17 @@ const MOBILE_REGEX = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/  //숫자만 입력
 
 const Join:FC = () => {
   const dispatch = useDispatch();
-
+  const nameRef = useRef<any|null>()
   const router = useRouter();
   const [user, setUser] = useState<User>({
     name: '',username: '', password: '', email: '', mobile:''
   })
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false);
-
+  useEffect(() => {
+    nameRef.current.focus();
+  }, [])
+  
 
 
   const onChange = (e: { preventDefault: () => void; target: { name: string;  value:string}}) => {
@@ -59,53 +64,37 @@ const Join:FC = () => {
     return (
         <div className={styles.container}>
             <h1>회원가입</h1>
-          <form onSubmit={handleSubmit}>
-                <TextField
-                  margin="normal"
+          <form onSubmit={handleSubmit} className={styles.form}>
+                <input
                   required
-                  fullWidth
-                  label="이름"
+                  placeholder="이름"
                   name="name"
-                  autoComplete="name"
                   onChange={onChange}
+                  ref={nameRef}
                 />
-                <TextField
-                  margin="normal"
+                <input
                   required
-                  fullWidth
-                  label="아이디"
+                  placeholder="아이디"
                   name="username"
-                  autoComplete="username"
                   onChange={onChange}
                 />
-                <TextField
-                  margin="normal"
+                <input
                   required
-                  fullWidth
                   name="password"
-                  label="비밀번호"
+                  placeholder="비밀번호"
                   type="password"
-                  autoComplete="current-password"
                   onChange={onChange}
                 />
-                <TextField
-                  margin="normal"
+                <input
                   required
-                  fullWidth
-                  id=""
-                  label="이메일"
+                  placeholder="이메일"
                   name="email"
-                  autoComplete="email"
                   onChange={onChange}
                 />  
-                <TextField
-                  margin="normal"
+                <input
                   required
-                  fullWidth
-                  id=""
-                  label="휴대번호"
+                  placeholder="휴대번호"
                   name="mobile"
-                  autoComplete="mobile"
                   onChange={onChange}
                 /> 
                 

@@ -1,15 +1,15 @@
-import React, { FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import Login from '@/components/users/Login'
-import { NextPage } from 'next'
 import { useAppDispatch } from '@/hooks'
-import { loginRequest } from '@/modules/users/userSlice'
+import { loginRequest } from '@/modules/slices/userSlice'
+import { NextPage } from 'next'
 
   
 const LoginPage: NextPage = () => {
   const [login, setLogin] = useState({ email: '', password: '' })
   const dispatch = useAppDispatch();
 
-  const handleChange = (e: FormEvent<HTMLInputElement> ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
     e.preventDefault();
     const { name, value } = e.currentTarget
     setLogin({...login,[name]:value})
@@ -22,7 +22,7 @@ const LoginPage: NextPage = () => {
   }
   return (
     <div>
-      <Login onChange={handleChange} onSubmit={handleSubmit} />
+      <Login handleChange={handleChange} handleSubmit={handleSubmit} />
     </div>
   )
 }

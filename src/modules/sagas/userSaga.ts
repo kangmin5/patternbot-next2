@@ -1,75 +1,44 @@
 
 import { AxiosResponse } from 'axios';
-import { call, put, takeLatest } from 'redux-saga/effects'
-import { userJoinApi, userLoginApi } from '../apis/userApi';
-import { userActions } from '../users/userSlice';
-
-interface UserJoinType{
-    type: string;
-    payload: {
-        name:string,username:string, password:string, email:string, mobile:string
-    }
-}
-interface UserJoinSuccessType{
-    type: string;
-    payload: {
-        name:string,username:string, password:string, email:string,  mobile:string
-    }
-}
-interface UserLoginType{
-    type: string;
-    payload: {
-        email:string, password:string
-    }
-}
-interface UserLoginSuccessType{
-    type: string;
-    payload: {
-        email:string,  password:string
-    }
-}
-
-function* join(user: UserJoinType){
-    try {
-        console.log('3 saga내부 join 성공  ' + JSON.stringify(user))
-        alert('3 saga내부 join 성공  '+ JSON.stringify(user))
-        const response: UserJoinSuccessType = yield userJoinApi(user.payload)
-        yield put(userActions.joinSuccess(response))
-    }catch(error){
-         console.log('3 saga내부 join 실패  ') 
-         yield put(userActions.joinFailure(error))
-    }
-}
-function* login(login: UserLoginType){
-    try{
-        alert(' 진행 3: saga내부 성공  '+ JSON.stringify(login))
-        const response: UserLoginSuccessType = yield userLoginApi(login.payload)
-        yield put(userActions.loginSuccess(response))
-    }catch(error){
-         alert('진행 3: saga내부 join 실패  ') 
-         yield put(userActions.loginFailure(error))
-    }
-}
-
-// export function* fetchUsersSaga(){
-//     const { fetchUsersSuccess, fetchUsersFailure } = userActions
-//         try {
-//             const res:AxiosResponse = yield call(fetchUsers)
-//             console.log(`fetchUsersSaga : ${JSON.stringify(res.data)}`) 
-//             yield put(fetchUsersSuccess(res.data))
-//         } catch (error) {
-//             yield put(fetchUsersFailure(error))
-//         }
-// }
-
-
+import { call, delay, put, takeLatest } from 'redux-saga/effects'
+import { userApi } from '../apis/userApi';
+import { loginFailure, loginSuccess, logoutFailure, logoutRequest, logoutSuccess, userActions } from '../slices/userSlice';
+import { User } from '../types';
 
 export function* watchJoin(){
-    yield takeLatest(userActions.joinRequest, join)
+    yield takeLatest(userActions.joinRequest, (action: { payload: User }) => {
+        try{
+            const response: any = userApi.join(action.payload)
+            put(userActions.loginSuccess(response))
+            // window.location.href = '/login';
+        }catch(error){
+            alert('진행 3: saga내부 join 실패  ') 
+            put(userActions.loginFailure(error))
+        }
+    })
 }
 export function* watchLogin(){
-    yield takeLatest(userActions.loginRequest, login)
+    yield takeLatest(userActions.loginRequest, (action: { payload: User }) => {
+        const { loginSuccess, loginFailure } = userActions;
+        try {
+            const response:any = userApi.login(action.payload)
+            put(loginSuccess(response.payload))
+            // window.location.href = '/';
+        } catch (err) {
+            put(loginFailure(err))
+        }
+    })
 }
-// export function* watchFetchUser(){
-//     yield takeLatest(userActions.fetchUsersRequest, fetchUsersSaga)
-// }
+export function* watchLogOut(){
+    yield takeLatest(logoutRequest, () => {
+        try{
+            const response = userApi.logout()
+            delay(1000)
+            put(logoutSuccess())
+            console.log(`로그아웃 성공`)
+        }catch(error){
+            put(logoutFailure)
+            console.log('로그아웃 실패')
+        }
+    })
+}

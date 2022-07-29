@@ -1,45 +1,39 @@
-import React, { FC, FormEvent, useRef } from 'react'
+import React, { ChangeEvent, FC, FormEvent, useEffect, useRef } from 'react'
 import styles from '@/styles/Login.module.css'
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Link from 'next/link';
 
-type Props = {
-  onChange : (e : FormEvent<HTMLInputElement> ) => void;
-  onSubmit : (e : FormEvent<HTMLFormElement>) => void;
+
+interface LoginProps {
+  handleChange : (e : ChangeEvent<HTMLInputElement> ) => void;
+  handleSubmit : (e : FormEvent<HTMLFormElement>) => void;
 }
 
-const Login: FC<Props> = ({onSubmit,onChange}:Props) => {
+const Login:FC<LoginProps> = ({handleSubmit,handleChange}:LoginProps) => {
 
-  const emailRef = useRef<HTMLInputElement>(null)
-  const passwordRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<any|null>()
+  useEffect(() => {
+    emailRef.current.focus()
+  },[])
 
   return (
     <div className={styles.container}>
             <h1 > 로그인</h1>
-        <form onSubmit={onSubmit} className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
             <input
-
-              required
-
-              id=""
+              type="email"
               placeholder="이메일"
               name="email"
-              autoComplete="off"
               ref={emailRef}
-              onChange={onChange}
+              onChange={handleChange}
+              required
             />
             <input
-
-              required
-
+              type="password"
               name="password"
               placeholder="비밀번호"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              ref={passwordRef}
-              onChange={onChange}
+              onChange={handleChange}
+              required
             />
             <Button
               fullWidth
@@ -58,7 +52,7 @@ const Login: FC<Props> = ({onSubmit,onChange}:Props) => {
               </Link>
         </div>
         <div>
-                <h5>계속 진행하면 patternBot의 서비스 약관 및 개인정보 보호정책에 동의한 것으로 간주됩니다.</h5>
+                <h5> patternBot의 서비스 약관 및 개인정보 보호정책에 동의합니다.</h5>
         </div>
 
         
@@ -66,3 +60,7 @@ const Login: FC<Props> = ({onSubmit,onChange}:Props) => {
   )
 }
 export default Login
+
+function initialValue<T>(initialValue: any, arg1: number) {
+    throw new Error('Function not implemented.');
+  }
