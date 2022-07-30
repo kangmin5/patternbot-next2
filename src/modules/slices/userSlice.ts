@@ -13,7 +13,7 @@ const initialState: UserState = {
     data: [],
     status: 'idle',
     isLoggined: false,
-    error: null
+    error: null,
 }
 
 export const userSlice = createSlice({
@@ -47,18 +47,7 @@ export const userSlice = createSlice({
             state.status = 'failed'
             state.error = error
         },
-        //토큰
-        loadUserRequest(state : UserState, action: PayloadAction){
-            console.log(`진행: 토큰으로 유저 정보 요청 ${JSON.stringify(action.payload)}`)
-        },
-        loadUserSuccess(state: UserState, action: PayloadAction<User>){
-            console.log(`진행 : 유저 정보 요청 성공 ${JSON.stringify(action.payload)}`)
-            state.data = [...state.data, action.payload]
-        },
-        loadUserFailure(state, {payload : error}){
-            console.log(`진행 : 유저 정보 요청 실패`)
-        },
-
+      
         // 로그아웃
         logoutRequest(state: UserState) {
             state.status = 'loading';
@@ -72,6 +61,25 @@ export const userSlice = createSlice({
             state.status = 'failed';
             state.error = action.payload;
         },
+
+        // saveToken(state, action) {
+
+        // },
+        // deleteToken(state, action) {
+            
+        // }
+
+                //토큰
+        // loadUserRequest(state : UserState, action: PayloadAction){
+        //     console.log(`진행: 토큰으로 유저 정보 요청 ${JSON.stringify(action.payload)}`)
+        // },
+        // loadUserSuccess(state: UserState, action: PayloadAction<User>){
+        //     console.log(`진행 : 유저 정보 요청 성공 ${JSON.stringify(action.payload)}`)
+        //     state.data = [...state.data, action.payload]
+        // },
+        // loadUserFailure(state, {payload : error}){
+        //     console.log(`진행 : 유저 정보 요청 실패`)
+        // },
     }
 })
 export const {

@@ -98,14 +98,14 @@ const Join:FC = () => {
                   onChange={onChange}
                 /> 
                 
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 1 ,p:2}}
-                  >
+                <button
+                  style={{
+                    padding: "1rem", marginTop: "1rem", backgroundColor: "dodgerblue",
+                    color: "white", fontWeight: "bold", borderColor: "dodgerblue"
+                  }}
+                    >
                     회원가입
-                  </Button>
+                </button>
               </form>
         
             <div>

@@ -1,13 +1,14 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import Login from '@/components/users/Login'
-import { useAppDispatch } from '@/hooks'
+// import { useAppDispatch } from '@/hooks'
 import { loginRequest } from '@/modules/slices/userSlice'
 import { NextPage } from 'next'
+import { useDispatch } from 'react-redux'
 
   
 const LoginPage: NextPage = () => {
   const [login, setLogin] = useState({ email: '', password: '' })
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
     e.preventDefault();

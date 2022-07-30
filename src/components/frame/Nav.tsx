@@ -1,8 +1,13 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import Link from 'next/link';
 import styles from '@/styles/Nav.module.css'
 
- const Nav:FC=()=> {
+const Nav: FC = () => {
+
+   useEffect(() => {
+     localStorage.getItem("loginWithToken")
+   }, [])
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -18,8 +23,10 @@ import styles from '@/styles/Nav.module.css'
               <Link className={styles.menu} href='/menus/contact'>Contact</Link>
               <Link className={styles.menu} href='/menus/faq'>FAQ</Link>
               <Link className={styles.menu} href='/users/userlist'>Userlist</Link>
+              <Link className={styles.menu} href='/users/logout'>LogOut</Link>
 
-          </div>
+         </div>
+        {/*{ localStorage.length  ? */}
         <div className={styles.loginMenu}>
           <div >
             <Link href='/users/login'>
@@ -30,6 +37,19 @@ import styles from '@/styles/Nav.module.css'
             <a className={styles.register}>회원가입</a></Link>
           </div>
         </div>
+        {/* :
+        <div className={styles.loginMenu}>
+          <div >
+            <Link href='/users/logout'>
+              <a className={styles.login}>로그아웃</a></Link>
+          </div>
+          <div >
+            <Link href='/users/join' className={styles.register}>
+            <a className={styles.register}>회원가입</a></Link>
+          </div>
+        </div>
+        } */}
+
       </div>
     </div>
   )

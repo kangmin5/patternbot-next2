@@ -10,7 +10,6 @@ export function* watchJoin(){
         try{
             const response: any = userApi.join(action.payload)
             put(userActions.loginSuccess(response))
-            // window.location.href = '/login';
         }catch(error){
             alert('진행 3: saga내부 join 실패  ') 
             put(userActions.loginFailure(error))
@@ -23,7 +22,7 @@ export function* watchLogin(){
         try {
             const response:any = userApi.login(action.payload)
             put(loginSuccess(response.payload))
-            // window.location.href = '/';
+            window.location.href = '/';
         } catch (err) {
             put(loginFailure(err))
         }
@@ -42,3 +41,7 @@ export function* watchLogOut(){
         }
     })
 }
+// function saveToken(token: any): any {
+//     throw new Error('Function not implemented.');
+// }
+

@@ -11,9 +11,9 @@ interface LoginProps {
 
 const Login:FC<LoginProps> = ({handleSubmit,handleChange}:LoginProps) => {
 
-  const emailRef = useRef<any|null>()
+  const usernameRef = useRef<any|null>()
   useEffect(() => {
-    emailRef.current.focus()
+    usernameRef.current.focus()
   },[])
 
   return (
@@ -21,10 +21,10 @@ const Login:FC<LoginProps> = ({handleSubmit,handleChange}:LoginProps) => {
             <h1 > 로그인</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
             <input
-              type="email"
-              placeholder="이메일"
-              name="email"
-              ref={emailRef}
+              type="text"
+              placeholder="사용자ID"
+              name="username"
+              ref={usernameRef}
               onChange={handleChange}
               required
             />
@@ -35,13 +35,14 @@ const Login:FC<LoginProps> = ({handleSubmit,handleChange}:LoginProps) => {
               onChange={handleChange}
               required
             />
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 1 ,p:2}}
+            <button
+          style={{
+            padding: "1rem", marginTop: "1rem", backgroundColor: "dodgerblue",
+            color: "white", fontWeight: "bold", borderColor: "dodgerblue"
+          }}
             >
               로그인
-            </Button>
+            </button>
         </form>
 
         <div>
@@ -61,6 +62,3 @@ const Login:FC<LoginProps> = ({handleSubmit,handleChange}:LoginProps) => {
 }
 export default Login
 
-function initialValue<T>(initialValue: any, arg1: number) {
-    throw new Error('Function not implemented.');
-  }
